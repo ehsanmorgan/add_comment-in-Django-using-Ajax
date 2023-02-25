@@ -1,0 +1,95 @@
+<div class="row">
+				<ul>
+					<i> <h1>
+							{{post.title}}
+						</h1> 
+					</i>
+					<i> <p> {{post.description}}</p> </i>
+				</ul>
+				
+
+
+<form   action="{% url 'all_posts:home'%}"> <input type="submit" value="All_Post">  </form>  
+	{% csrf_token %}
+
+
+
+			</div>
+
+
+
+
+			   	
+
+
+			<div  class="product-details-frame">
+					       <h3 class="frame-title">Add Your Comment</h3>
+					       <form  method="POST" id="commentForm" action=" {% url 'all_posts:post_detail' post.slug %} " name="body" enctype="multipart/form-data">
+    							{% csrf_token %}
+   								 <h4> Name : {{form.name}} </h4>
+   								 <h4>{{form.body}} </h4>
+     								<input name="body"  type="submit" value="Add Your Comment"> 
+    
+							</form>
+
+
+					<div class="list_comment" id="all_comment">
+					 	{% include 'include/comment.html' %}
+					     
+					 	           
+					</div>
+					 	}
+
+			</div>
+
+					
+
+
+				
+
+
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script>
+	$(decument).ready (function(e){
+		$(decument).on('submit','#commentForm',function(e){
+			e.preventDefault();
+			$.ajax({
+				type:$(this).attr('method'),
+				url:$(this).attr('action'),
+				data:$(this).serialize(),
+				dataType:'json',
+				success:function(response){
+					$('#all_comment').html(response ['result'])
+					$('#commentForm').trigger('reset');
+
+				},
+				erroe:function(response){}
+			})
+		})
+	})
+	
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+
+
+
+<div class='row'> 
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h4> Title {{form.title}}</h4>
+    <h4> Your Post {{form.description}}</h4>
+     <input type="submit" value="Add Post"> 
+    
+</form>
+
+
+
+
+ <form method='POST'  action="{% url 'all_posts:home'%}"> <input type="submit" value="All_Post"> {% csrf_token %}     </form>    </div>
+
+
