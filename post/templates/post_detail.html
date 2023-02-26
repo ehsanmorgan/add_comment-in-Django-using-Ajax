@@ -9,7 +9,7 @@
 				
 
 
-	<form   action="{% url 'all_posts:home'%}"> <input type="submit" value="All_Post">  </form>  	
+	<form   action="{% url 'all_posts:home'%}"> <input style="height:40px ; width: 120px;" type="submit" value="All Post">  </form>  	
 		{% csrf_token %}
 
 
@@ -28,7 +28,7 @@
 									<p> Enter Your Name	{{form.name}} </p>
 									<h4>	{{form.body}} </h4>
 						
-     								<button type="submit" class="btn btn-primary  m-3 " > Drop Your Comment </button>
+     								<button style="height:40px ; width: 200px;" type="submit" class="btn btn-primary  m-3 " > Drop Your Comment </button>
 									<p> ({{post.comments.all|length}}) comments </p>
     
 							</form>

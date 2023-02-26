@@ -1,4 +1,12 @@
 <div class="row">
+
+
+    <form method="POST" action="{% url 'all_posts:post_list' %}">
+        {% csrf_token %}
+        {{form}}
+    <input style="height:40px ; width: 120px;" type="submit" value="Create Post">
+    </form>
+    
     {% for item in home %}
     
      <a href="{% url 'all_posts:post_detail' item.slug %}" >  
@@ -7,10 +15,6 @@
 
     {% endfor %}
 
-    <form method="POST" action="{% url 'all_posts:post_list' %}">
-        {% csrf_token %}
-        {{form}}
-    <input type="submit" value="Create Post">
-    </form>
+   
 
 </div>
