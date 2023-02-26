@@ -26,6 +26,7 @@
 					       <form  method = "POST"  action= " {% url 'all_posts:post_detail' post.slug %} " id = "commentForm"  enctype="multipart/form-data" >
     							{% csrf_token %}
 									<p> Enter Your Name	{{form.name}} </p>
+									<h3>Enter Your Comment</h3>
 									<h4>	{{form.body}} </h4>
 						
      								<button style="height:40px ; width: 200px;" type="submit" class="btn btn-primary  m-3 " > Drop Your Comment </button>
@@ -38,9 +39,9 @@
 						{% for comment in comment_1 %}
 							<div class="card-body">
 								<div> 
-									<p class="">{{comment.created_on}}</p>
-									<h3> {{comment.name}} </h3>
-									<p class="">{{comment.body}}</p>
+									<h4 class=""> Date: {{comment.created_on}}</h4>
+									<h4> Name: {{comment.name}} </h4>
+									<h4 class=""> Comment: {{comment.body}}</h4>
 									<hr>
 								</div>
 							</div>

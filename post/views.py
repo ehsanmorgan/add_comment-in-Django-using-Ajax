@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.contrib import messages
 
 def Home(request):
     home=Post.objects.all()
@@ -38,12 +39,18 @@ def post_detail(request, slug):
             myform.user=request.user
             myform.mypost = post
             myform.save()
+            
 
     else:
-        form = CommentForm()
+        form=CommentForm()
+        
+            
+
+  
+    
 
 
-    return render(request , 'post_detail.html' , {'post':post , 'form':form ,'comment_1':comment_1 })
+    return render(request , 'post_detail.html' , {'post':post , 'form':form ,'comment_1':comment_1  })
             
            
 
