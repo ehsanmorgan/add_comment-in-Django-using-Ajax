@@ -1,5 +1,8 @@
 {% for comment in comment_1 %}
 	<div class="card-body">
-		<p class="">{{comment.body}}</p>
+		<div> 
+			<p class="">{{comment.name}}</p>
+			<p class="">{{comment.body}}</p>
+		</div>
 	</div>
 {% endfor %}

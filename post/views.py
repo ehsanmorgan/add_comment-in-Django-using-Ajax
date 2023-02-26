@@ -29,31 +29,30 @@ def PostList(request):
 
 
 def post_detail(request, slug):
-    post=Post.objects.get(slug=slug)
-    comment_1=Comment.objects.filter(mypost=post)
-    if request.method=='POST':
-        form=CommentForm(request.POST)
+    post=Post.objects.get(slug = slug)
+    comment_1 = Comment.objects.all().filter(mypost = post)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
         if form.is_valid():
             myform=form.save(commit=False)
             myform.user=request.user
-            myform.mypost=post
+            myform.mypost = post
             myform.save()
-            comment_1=Comment.objects.filter(mypost=post)
-            html= render_to_string('include/comment.html' ,{'comment_1':comment_1  })
-            return JsonResponse({'result' : html })
 
     else:
-        form=CommentForm()
+        form = CommentForm()
+
+
+    return render(request , 'post_detail.html' , {'post':post , 'form':form ,'comment_1':comment_1 })
             
            
-    return render(request,'post_detail.html',{'post':post ,'form':form , 'comment_1':comment_1  })
 
 
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["comment_1"] = Comment.objects.filter(mypost=self.get_object())
-        return context
+            context = super().get_context_data(**kwargs)
+            context["comment_1"] = Comment.objects.filter(mypost = self.get_object())
+            return context
     
 
 
