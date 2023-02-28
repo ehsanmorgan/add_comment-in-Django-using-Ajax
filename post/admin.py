@@ -16,6 +16,6 @@ class SomeModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
     
     
     
-admin.site.register(Post,SomeModelAdmin)
+admin.site.register(Post)
 
 # Register your models here.

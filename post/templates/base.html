@@ -9,10 +9,14 @@
     
     {% for item in home %}
     
-     <a href="{% url 'all_posts:post_detail' item.slug %}" >  
-            <h1>{{item.title}}</h1>  </a>
-            <p> {{item.description|truncatewords:"50"}}</p>
+        <a href="{% url 'all_posts:post_detail' item.slug %}" >  
+            <h1>  {{item.title}}  </h1>    
+        </a>
 
+       
+
+        <p> {{item.description|truncatewords:"50"}}</p>
+       
     {% endfor %}
 
    
