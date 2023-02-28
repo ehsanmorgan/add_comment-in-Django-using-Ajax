@@ -3,13 +3,11 @@
 
 <div class='row'> 
 
-    
-
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <h4> Title {{form.title}}</h4>
     <h4>Create Post</h4>
-    <h4> {{form.description}}</h4>
+    <h4> {{form.description|safe|truncatewords:"50"}}</h4>
      <input style="height:40px ; width: 120px;" type="submit" value="Add Post"> 
     
 </form>

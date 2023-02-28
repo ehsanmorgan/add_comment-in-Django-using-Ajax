@@ -9,7 +9,7 @@ from django .utils.text import slugify
 class Post(models.Model):
     
     title=models.CharField(max_length=20)
-    description=models.TextField(max_length=1000)
+    description=models.TextField(max_length=100000)
     slug = models.SlugField(null=True,blank=True)
 
     def __str__(self):

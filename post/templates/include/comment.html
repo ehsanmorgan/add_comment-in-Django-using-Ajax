@@ -1,8 +1,10 @@
 {% for comment in comment_1 %}
-	<div class="card-body">
-		<div> 
-			<p class="">{{comment.name}}</p>
-			<p class="">{{comment.body}}</p>
-		</div>
-	</div>
+							<div class="card-body">
+								<div> 
+									<h4 class=""> Date: {{comment.created_on}}</h4>
+									<h4> Name: {{comment.name}} </h4>
+									<h4 class=""> Comment: {{comment.body}}</h4>
+									<hr>
+								</div>
+							</div>
 {% endfor %}

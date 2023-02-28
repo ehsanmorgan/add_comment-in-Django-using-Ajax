@@ -48,16 +48,16 @@ def post_detail(request, slug):
             myform.mypost = post
             myform.save()
             
+            
+            comment_1 = Comment.objects.all().filter(mypost = post)
+            html=render_to_string('include/comment.html',{'comment_1':comment_1})
+            return JsonResponse({'result':html})
+            
+            
 
     else:
         form=CommentForm()
-        
-            
-
-  
     
-
-
     return render(request , 'post_detail.html' , {'post':post , 'form':form ,'comment_1':comment_1  })
             
            

@@ -1,20 +1,23 @@
 <div class="row">
+
+	<form   action="{% url 'all_posts:home'%}"> <input style="height:40px ; width: 120px;" type="submit" value="All Post">  </form>  	
+		{% csrf_token %}
+		<a href="{% url 'all_posts:delete' post.slug %}" >Delete Post
+
+		</a>
 				<ul>
 					<i> <h1>
 							{{post.title}}
 						</h1> 
 					</i>
-					<i> <p> {{post.description}}</p> </i>
+					<i> <p> {{post.description|safe}}</p> </i>
 				</ul>
 				
 
 
-	<form   action="{% url 'all_posts:home'%}"> <input style="height:40px ; width: 120px;" type="submit" value="All Post">  </form>  	
-		{% csrf_token %}
+	
 
-		<a href="{% url 'all_posts:delete' post.slug %}" >Delete Post
-
-		</a>
+		
 
 
 </div>
@@ -31,33 +34,26 @@
     							{% csrf_token %}
 									<p> Enter Your Name	{{form.name}} </p>
 									<h3>Enter Your Comment</h3>
-									<h4>	{{form.body}} </h4>
+									<h4 name="body">	{{form.body}} </h4>
 						
      								<button style="height:40px ; width: 200px;" type="submit" class="btn btn-primary  m-3 " > Drop Your Comment </button>
 									<p> ({{post.comments.all|length}}) comments </p>
     
-							</form>
+							
 
 
-					<div class="card" style="border-reduis:7px;" id = "all_comment">
-						{% for comment in comment_1 %}
-							<div class="card-body">
-								<div> 
-									<h4 class=""> Date: {{comment.created_on}}</h4>
-									<h4> Name: {{comment.name}} </h4>
-									<h4 class=""> Comment: {{comment.body}}</h4>
-									<hr>
-								</div>
-							</div>
-						{% endfor %}
+								<div class="card"  id = "add-all">
+									{% include 'include/comment.html' %}
+
+						
 					     
 					 	           
-					</div>
+								</div>
 					 	
 
 			</div>
 
-					
+							</form>
 
 
 				
@@ -66,14 +62,40 @@
 
 		</div>
 
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+	$(document).ready(function(e){
+		$(document).on('submit','#commentForm',function(e){
+			e.preventDefault();
+			$.ajax({
+				type:$(this).attr('method'),
+				url:$(this).attr('action'),
+				data:$(this).serialize(),
+				dataType:'json',
+				success:function(response){
+					$('#add-all').html(response['result'])
+					$("#commentForm").trigger('reset');
+					
+					
+
+				},
+				error:function(response){}
+
+
+
+			})                    
+		})
+	})
+</script>
+
+
+
 </div>
-
-
-
-
-
-
-
 
 
 
