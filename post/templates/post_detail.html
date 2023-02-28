@@ -12,6 +12,10 @@
 	<form   action="{% url 'all_posts:home'%}"> <input style="height:40px ; width: 120px;" type="submit" value="All Post">  </form>  	
 		{% csrf_token %}
 
+		<a href="{% url 'all_posts:delete' post.slug %}" >Delete Post
+
+		</a>
+
 
 </div>
 

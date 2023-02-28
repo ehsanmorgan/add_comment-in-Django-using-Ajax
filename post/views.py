@@ -28,6 +28,14 @@ def PostList(request):
 
 
 
+        
+def deletepost(request,slug):
+    deleted=Post.objects.get(slug=slug)
+    deleted.delete()
+    return redirect('/allposts/')
+
+
+
 
 def post_detail(request, slug):
     post=Post.objects.get(slug = slug)
@@ -60,6 +68,9 @@ def post_detail(request, slug):
             context = super().get_context_data(**kwargs)
             context["comment_1"] = Comment.objects.filter(mypost = self.get_object())
             return context
+        
+        
+
     
 
 
