@@ -30,6 +30,9 @@ def PostList(request):
 
 
 
+
+
+
         
 def deletepost(request,slug):
     deleted=Post.objects.get(slug=slug)
