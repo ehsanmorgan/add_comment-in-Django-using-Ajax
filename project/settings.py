@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'post',
-    'crispy_forms',
-    'django_summernote',
+   
 ]
 
 MIDDLEWARE = [

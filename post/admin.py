@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import Post, Comment
-from django_summernote.admin import SummernoteModelAdmin
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     
@@ -11,8 +10,6 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 
-class SomeModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
-    summernote_fields = '__all__'
     
     
     
