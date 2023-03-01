@@ -21,6 +21,8 @@ def PostList(request):
             myform=form.save(commit=False)
             myform.save()
             
+            
+            
                 
     else:
         form = PostForm()
