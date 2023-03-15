@@ -2,7 +2,7 @@ from django.urls import path
 from .views import post_detail,PostList,Home,post_detail,deletepost,Post_Like
 
 
-from .api import postListApi,postDetailApi
+from .api import postListApi,postDetailApi,CommentListApi
 
 
 app_name='post'
@@ -18,4 +18,5 @@ urlpatterns = [
     #API
     path('api',postListApi.as_view(),name='post_list'),
     path('<slug:slug>/api_detail',postDetailApi.as_view(),name='postapi_detail'),
+    path('api/comment',CommentListApi.as_view()),
 ]
