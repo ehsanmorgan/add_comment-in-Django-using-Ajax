@@ -27,26 +27,29 @@
 
 
 			<div  class="product-details-frame">
+				<h3> ({{post.comments.all|length}}) comments </h3>
+				<div class="card"  id = "add-all">
+					{% include 'include/comment.html' %}
+
+		
+		 
+					
+				</div>
 					       <h3 class="frame-title">Add Your Comment</h3>
 					       <form  method = "POST"  action= " {% url 'all_posts:post_detail' post.slug %} " id = "commentForm"  enctype="multipart/form-data" >
     							{% csrf_token %}
+									
 									<p> Enter Your Name	{{form.name}} </p>
 									<h3>Enter Your Comment</h3>
 									<h4 name="body">	{{form.body}} </h4>
 						
      								<button style="height:40px ; width: 200px;" type="submit" class="btn btn-primary  m-3 " > Drop Your Comment </button>
-									<p> ({{post.comments.all|length}}) comments </p>
+									
     
 							
 
 
-								<div class="card"  id = "add-all">
-									{% include 'include/comment.html' %}
-
-						
-					     
-					 	           
-								</div>
+								
 					 	
 
 			</div>
