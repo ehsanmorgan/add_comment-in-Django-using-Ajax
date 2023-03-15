@@ -1,0 +1,6 @@
+<form id="likepost" action=" {% url 'all_posts:Post_Like' post.slug %} "  method="POST">
+    {% csrf_token %}
+        <button type="submit"  > {%  if request.user in post.like.all %}DisLike{%else%}Like{%endif%} </button>
+        <h3> ({{post.like.all|length}}) LIKE </h3>
+            
+</form>

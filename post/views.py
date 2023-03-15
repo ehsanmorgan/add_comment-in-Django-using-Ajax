@@ -7,6 +7,28 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.contrib import messages
 
+
+def Post_Like(request,slug):
+    post=Post.objects.get(slug = slug)
+    if request.method=='POST':
+        if request.user in post.like.all():
+            post.like.remove(request.user)
+            is_like=False
+        else:
+            post.like.add(request.user)
+            is_like=True
+    post=Post.objects.get(slug = slug)
+    html=render_to_string('include/likeform.html',{'post':post})
+    return JsonResponse({'result':html})
+
+
+
+
+
+
+
+
+
 def Home(request):
     home=Post.objects.all()
     return render(request,'base.html',{'home':home})
@@ -74,6 +96,11 @@ def post_detail(request, slug):
             context["comment_1"] = Comment.objects.filter(mypost = self.get_object())
             return context
         
+        
+
+        
+    
+    
         
 
     

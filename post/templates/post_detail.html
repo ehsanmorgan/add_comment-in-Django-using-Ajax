@@ -27,14 +27,20 @@
 
 
 			<div  class="product-details-frame">
+				<div id="likeform1"> 
+					
+					{% include 'include/likeform.html' %} 
+					
+				</div>
+					 
 				<h3> ({{post.comments.all|length}}) comments </h3>
 				<div class="card"  id = "add-all">
 					{% include 'include/comment.html' %}
 
 		
-		 
 					
 				</div>
+					
 					       <h3 class="frame-title">Add Your Comment</h3>
 					       <form  method = "POST"  action= " {% url 'all_posts:post_detail' post.slug %} " id = "commentForm"  enctype="multipart/form-data" >
     							{% csrf_token %}
@@ -89,8 +95,39 @@
 
 
 
-			})                    
+			})    
+			                
 		})
+	
+	})
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+	$(document).ready(function(e){
+		$(document).on('submit','#likepost',function(e){
+			e.preventDefault();
+			$.ajax({
+				type:$(this).attr('method'),
+				url:$(this).attr('action'),
+				data:$(this).serialize(),
+				dataType:'json',
+				success:function(response){
+					$('#likeform1').html(response['result'])
+					
+					
+					
+		
+				},
+				error:function(response){}
+
+
+
+			})    
+			                
+		})
+	
 	})
 </script>
 
