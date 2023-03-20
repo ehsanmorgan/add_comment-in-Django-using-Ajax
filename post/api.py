@@ -8,6 +8,9 @@ class postListApi(generics.ListAPIView):
     serializer_class=postSerializer
     
     
+    
+    
+    
 class postDetailApi(generics.RetrieveUpdateDestroyAPIView):
     queryset=Post.objects.all()
     serializer_class=postDetailSerializer
