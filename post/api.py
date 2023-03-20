@@ -14,6 +14,9 @@ class postDetailApi(generics.RetrieveUpdateDestroyAPIView):
     lookup_field='slug'
     
     
+    
+    
+    
 class CommentListApi(generics.ListAPIView):
     queryset=Comment.objects.all()
     serializer_class=CommentSerializer
