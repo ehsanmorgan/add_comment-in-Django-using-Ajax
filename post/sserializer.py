@@ -28,3 +28,6 @@ class postDetailSerializer(serializers.ModelSerializer):
         
         
         
+
+
+
