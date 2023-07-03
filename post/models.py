@@ -13,8 +13,10 @@ class Post(models.Model):
     
     title=models.CharField(max_length=20)
     description=models.TextField(max_length=100000)
-    slug = models.SlugField(null=True,blank=True)
-    like=models.ManyToManyField(User,related_name='post_like',blank=True)
+    image=models.ImageField(null=True,blank=True)
+    tags=models.CharField(max_length=10)
+    craete_date=models.DateTimeField
+ 
 
     def __str__(self):
         return self.title
@@ -41,7 +43,7 @@ class Post(models.Model):
 class Comment(models.Model):
     mypost = models.ForeignKey(Post,related_name='comments',on_delete=models.CASCADE)
     name = models.CharField(max_length=80)
-    body = models.TextField()
+    body = models.TextField(max_length=200)
     created_on = models.DateTimeField(auto_now_add=True)
     
     

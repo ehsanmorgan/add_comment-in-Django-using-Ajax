@@ -10,10 +10,12 @@ class postSerializer(serializers.ModelSerializer):
         
 class CommentSerializer(serializers.ModelSerializer):
    
+   
     
     class Meta:
         model=Comment
         fields=['name','body','created_on']
+        
         
         
 
