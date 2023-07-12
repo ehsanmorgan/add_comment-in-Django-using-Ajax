@@ -18,6 +18,9 @@ class CommentSerializer(serializers.ModelSerializer):
         
         
         
+        
+        
+        
 
 class postDetailSerializer(serializers.ModelSerializer):
     like=serializers.StringRelatedField()
